@@ -1,9 +1,9 @@
 {
   "Database": {
-    "ip": "10.44.1.45:5881",
-    "id": "ima",
-    "password": "tyvldim?!0",
-    "name": "DailyCheck"
+    "ip": "ip:port",
+    "id": "id",
+    "password": "dnjfdydlf",
+    "name": "name"
   },
   "TodaysChecker": {
     "window_title": "오늘의 당직",

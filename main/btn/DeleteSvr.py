@@ -1,31 +1,3 @@
-# class DeleteSvr:
-#     def __init__(self):
-#         from func.GetSvrInfo import GetSvrInfo
-#         self.svr_id, self.hostname = GetSvrInfo.get_svr_list()
-#
-#     def delete(self, row):
-#         from ui.CommonUI import MessageBoxWarning
-#         from PyQt5.QtWidgets import QMessageBox
-#
-#         msgbox = MessageBoxWarning("Warning", self.hostname[row] + " 서버의 기록이 모두 삭제됩니다.")
-#         msgbox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-#         btn = msgbox.exec_()
-#
-#         if btn == QMessageBox.Ok:
-#             from conf.config import Config
-#             from main.MainForm import MainForm
-#             import datetime
-#             con = Config().conf_db_connection()
-#             cursor = con.cursor()
-#             sql = "EXEC CT_DELETE_SERVER_LIST " + str(self.svr_id[row])
-#             cursor.execute(sql)
-#             con.commit()
-#
-#             MainForm().set_tableWgt1(datetime.datetime.today().date())
-#         elif btn == QMessageBox.Cancel:
-#             msgbox.close()
-
-
 from PyQt5.QtWidgets import QDialog
 from ui import DeleteSvrUI
 from func.GetSvrInfo import GetSvrInfo
@@ -79,3 +51,31 @@ class DeleteSvr_New(QDialog):
         if hostname not in self.svr_list.values():
             return -1
         return next(key for key, val in self.svr_list.items() if val == hostname)
+
+
+# class DeleteSvr:
+#     def __init__(self):
+#         from func.GetSvrInfo import GetSvrInfo
+#         self.svr_id, self.hostname = GetSvrInfo.get_svr_list()
+#
+#     def delete(self, row):
+#         from ui.CommonUI import MessageBoxWarning
+#         from PyQt5.QtWidgets import QMessageBox
+#
+#         msgbox = MessageBoxWarning("Warning", self.hostname[row] + " 서버의 기록이 모두 삭제됩니다.")
+#         msgbox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+#         btn = msgbox.exec_()
+#
+#         if btn == QMessageBox.Ok:
+#             from conf.config import Config
+#             from main.MainForm import MainForm
+#             import datetime
+#             con = Config().conf_db_connection()
+#             cursor = con.cursor()
+#             sql = "EXEC CT_DELETE_SERVER_LIST " + str(self.svr_id[row])
+#             cursor.execute(sql)
+#             con.commit()
+#
+#             MainForm().set_tableWgt1(datetime.datetime.today().date())
+#         elif btn == QMessageBox.Cancel:
+#             msgbox.close()

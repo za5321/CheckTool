@@ -1,0 +1,8 @@
+build/
+dist/
+conf/config.json
+*.spec
+*.spec_bak
+*.pyc
+MainForm1.ui
+UpdateSvr.ui
