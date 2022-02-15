@@ -1,6 +1,6 @@
 {
   "Database": {
-    "ip": "ip, port",
+    "ip": "ip:port",
     "id": "id",
     "password": "password",
     "name": "name"
