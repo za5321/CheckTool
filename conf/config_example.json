@@ -1,16 +1,16 @@
 {
   "Database": {
-    "ip": "10.44.1.45:5881",
-    "id": "ima",
-    "password": "tyvldim?!0",
-    "name": "DailyCheck"
+    "ip": "ip:port",
+    "id": "id",
+    "password": "password",
+    "name": "name"
   },
   "TodaysChecker": {
-    "window_title": "오늘의 당직",
+    "window_title": "title",
     "icon": "icons\\TodaysChecker.png"
   },
   "MainForm": {
-    "window_title": "Daily Check",
+    "window_title": "title",
     "icon": "icons\\MainForm.png",
     "use_separated_row": [4, 5, 6],
     "copy_string": "<tr>\n<td>호스트명</td>\n<td>CPU</td>\n<td>메모리</td>\n<td>메모리 증감율</td>\n<td>디스크</td>\n<td>디스크 용량</td>\n<td>디스크 증감율</td>\n<td>서비스</td>\n<td>작업스케줄러</td>\n<td>윈도우디펜더</td>\n<td>이벤트</td>\n</tr>"
@@ -21,7 +21,7 @@
   },
   "ManageCode": {
     "window_title": "코드 관리",
-    "icon": "icons\\InsertSvr.png",
+    "icon": "icons\\InsertSvr.png"
     "tab_text": ["시스템", "구분"]
   },
   "DeleteSvr": {
