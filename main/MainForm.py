@@ -96,12 +96,12 @@ class MainForm(QMainWindow):
         # self.ui.tableWgt1.resizeColumnsToContents()
 
     def click_toolBtn1(self):
-        '''Refresh tableWgt1 (date: today)'''
+        """Refresh tableWgt1 (date: today)"""
         today = datetime.datetime.today().date()
         self.set_tableWgt1(today)
 
     def click_toolBtn2(self):
-        '''Insert a new server'''
+        """Insert a new server"""
         from main.btn.InsertSvr import InsertSvr
         InsertSvr(self)
 
@@ -109,18 +109,18 @@ class MainForm(QMainWindow):
         return self.ui.tableWgt1.currentRow()
 
     def click_toolBtn3(self):
-        '''Delete the server'''
+        """Delete the server"""
         from main.btn.DeleteSvr import DeleteSvr_New
         # DeleteSvr().delete(self.click_tableWgt1())
         DeleteSvr_New(self)
 
     def click_toolBtn4(self):
-        '''Refresh tableWgt1 (date: selected date)'''
+        """Refresh tableWgt1 (date: selected date)"""
         date = datetime.datetime.strptime(self.ui.dateEdit1.date().toString('yyyy-MM-dd'), '%Y-%m-%d').date()
         self.set_tableWgt1(date)
 
     def click_toolBtn5(self):
-        '''To manage syscode, gbcode'''
+        """To manage syscode, gbcode"""
         from main.btn.ManageCode import ManageCode
         ManageCode(self)
 
@@ -135,8 +135,7 @@ class MainForm(QMainWindow):
             return next(key for key, value in self.svr_current_row.items() if value == val)
 
     def eventFilter(self, source, event):
-        '''To copy and paste selected items in tableWgt1'''
-
+        """To copy and paste selected items in tableWgt1"""
         from PyQt5.QtCore import QEvent
         from PyQt5.QtGui import QKeySequence
 

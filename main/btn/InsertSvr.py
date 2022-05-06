@@ -6,8 +6,8 @@ class InsertSvr(QDialog):
         from ui import InsertSvrUI
         super(InsertSvr, self).__init__(parent)
         self.parent = parent
-        self.disk_cnt, self.svc_cnt, self.task_cnt = 0, 0, 0
-        self.disk_var, self.svc_var, self.task_var = [], [], []
+        self.disk_cnt = self.svc_cnt = self.task_cnt = 0
+        self.disk_var = self.svc_var = self.task_var = []
 
         self.ui = InsertSvrUI.ui(self)
         self.show()
@@ -97,15 +97,8 @@ class InsertSvr(QDialog):
                 con = Config().conf_db_connection()
                 cursor = con.cursor()
 
-                sql = "INSERT INTO SERVER_LIST VALUES('" \
-                      + host + "', '" \
-                      + ip + "', '" \
-                      + disk + "', '" \
-                      + svc + "', '" \
-                      + task + "', '" \
-                      + wdef + "', '" \
-                      + str(sys_code) + "', '" \
-                      + str(gb_code) + "')"
+                sql = f"INSERT INTO SERVER_LIST VALUES('{host}', '{ip}', '{disk}', '{svc}', '{task}', '{wdef}', " \
+                      f"'{str(sys_code)}', '{str(gb_code)}')"
                 try:
                     cursor.execute(sql)
                     con.commit()
