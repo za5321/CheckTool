@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QDialog
+import pymssql
 
 
 class InsertSvr(QDialog):
@@ -7,7 +8,7 @@ class InsertSvr(QDialog):
         super(InsertSvr, self).__init__(parent)
         self.parent = parent
         self.disk_cnt = self.svc_cnt = self.task_cnt = 0
-        self.disk_var = self.svc_var = self.task_var = []
+        self.disk_var, self.svc_var, self.task_var = [], [], []
 
         self.ui = InsertSvrUI.ui(self)
         self.show()
@@ -62,11 +63,12 @@ class InsertSvr(QDialog):
 
     def accepted(self):
         from ui.CommonUI import MessageBoxWarning
+        from func.InsertSvr import InsertSvr
         ip = self.ih_ip_le.text()
         host = self.ih_host_le.text()
-        disk = self.disk_le.text().upper()
-        svc = self.sys_le.text() + " "
-        task = self.task_le.text() + " "
+        disk = [self.disk_le.text().upper()]
+        svc = [self.sys_le.text()] if self.sys_le.text() else []
+        task = [self.task_le.text()] if self.task_le.text() else []
         wdef = self.click_wdef_radio()
 
         sys_code = self.sys_list[self.code_sys_combo.currentIndex()][0]
@@ -80,33 +82,30 @@ class InsertSvr(QDialog):
             self.disk_msgbox = MessageBoxWarning("Warning", "디스크는 필수 입력항목입니다.")
             self.disk_msgbox.show()
 
+        elif wdef == "2":
+            self.wdef_msgbox = MessageBoxWarning("Warning", "윈도우 디펜더는 필수 입력항목입니다.")
+            self.wdef_msgbox.show()
+
         else:
-            disk += ":\\ "
-            disk += ":\\ ".join(i.text().upper() for i in self.disk_var)
-            disk += ":\\"
-            svc += " ".join(i.text() for i in self.svc_var)
-            task += " ".join(i.text() for i in self.task_var)
+            if self.disk_var:
+                for i in self.disk_var:
+                    disk.append(i.text().upper())
+            if self.svc_var:
+                for i in self.svc_var:
+                    svc.append(i.text())
+            if self.task_var:
+                for i in self.task_var:
+                    task.append(i.text())
 
-            if wdef == "2":
-                self.wdef_msgbox = MessageBoxWarning("Warning", "윈도우 디펜더는 필수 입력항목입니다.")
-                self.wdef_msgbox.show()
-            else:
-                from conf.config import Config
-                #import datetime
-                import pymssql
-                con = Config().conf_db_connection()
-                cursor = con.cursor()
-
-                sql = f"INSERT INTO SERVER_LIST VALUES('{host}', '{ip}', '{disk}', '{svc}', '{task}', '{wdef}', " \
-                      f"'{str(sys_code)}', '{str(gb_code)}')"
-                try:
-                    cursor.execute(sql)
-                    con.commit()
-                    self.close()
-                    #self.parent.set_tableWgt1(datetime.datetime.today().date())
-                except pymssql.IntegrityError:
-                    self.host_msgbox = MessageBoxWarning("Warning", "이미 등록된 호스트명입니다.")
-                    self.host_msgbox.show()
+        print(1)
+        insert = InsertSvr(host, ip)
+        print(2)
+        insert.insert_svr(int(wdef), int(sys_code), int(gb_code))
+        print(3)
+        insert.insert_svr_info('DISK', disk)
+        insert.insert_svr_info('SERVICE', svc)
+        insert.insert_svr_info('TASK', task)
+        print(4)
 
     def rejected(self):
         self.close()

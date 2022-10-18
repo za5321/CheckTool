@@ -18,7 +18,7 @@ class GetSvrInfo:
         svr_dict = {}
 
         cursor = con.cursor()
-        sql = "EXEC CT_SELECT_SERVERLIST"
+        sql = "EXEC CT_SELECT_SERVER"
         cursor.execute(sql)
         row = cursor.fetchone()
         while row:

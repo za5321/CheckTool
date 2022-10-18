@@ -37,7 +37,7 @@ class MainForm(QMainWindow):
         return Config().conf_main_form(flag)
 
     def set_tableWgt1(self, date: datetime):
-        """tableWgt1: date의 점검 결과를 보여주는 메인 테이블 위젯"""
+        """tableWgt1: Main table widget to present the result of the date"""
         from func.GetSvrInfo import GetSvrInfo
         from main.btn.SetMainForm import SetMainForm
         from PyQt5.QtWidgets import QTableWidgetItem

@@ -1,8 +1,13 @@
 build/
 dist/
+dist_경지/
+dist_재무/
 conf/config.json
 *.spec
 *.spec_bak
 *.pyc
 MainForm1.ui
 UpdateSvr.ui
+sql/
+test.py
+test.xlsx
