@@ -1,4 +1,5 @@
 from conf.config import Config
+import pymssql
 
 con = Config().conf_db_connection()
 
@@ -9,28 +10,33 @@ class InsertSvr():
         self.ip = ip
         self.serverid = 0
 
-    def insert_svr(self, wdef, sys_code, gb_code):
-        cursor = con.cursor()
-        print(self.host, type(self.host))
-        print(self.ip, type(self.ip))
-        print(wdef, type(wdef))
-        print(sys_code, type(sys_code))
-        print(gb_code, type(gb_code))
-        #sql = f"EXEC CT_INSERT_SERVER '{self.host}', '{self.ip}', {wdef}, {sys_code}, {gb_code}"
-        sql = f"insert into server values '{self.host}', '{self.ip}', {wdef}, {sys_code}, {gb_code}"
-        cursor.execute(sql)
-
+    def insert_svr(self, wdef, sys_code, gb_code) -> int:
+        try:
+            cursor = con.cursor()
+            sql = f"INSERT INTO SERVER VALUES('{self.host}', '{self.ip}', {wdef}, {sys_code}, {gb_code})"
+            cursor.execute(sql)
+            con.commit()
+        except:
+            return -1
         self.serverid = self.get_serverid()
+        return self.serverid
 
     def get_serverid(self) -> int:
         cursor = con.cursor()
-        sql = f"SELECT SERVERID FROM SERVER WHERE HOSTNAME = {self.host} AND IP = {self.ip}"
+        sql = f"SELECT SERVERID FROM SERVER WHERE HOSTNAME = '{self.host}' AND IP = '{self.ip}'"
         cursor.execute(sql)
         row = cursor.fetchall()
         return row[0][0]
 
-    def insert_svr_info(self, flag: str, var: list):
+    def insert_svr_info(self, flag: str, var: list) -> bool:
+        cnt = 0
         for v in var:
-            cursor = con.cursor()
-            sql = f"EXEC CT_INSERT_SERVER_INFO {flag}, {self.serverid}, {v}"
-            cursor.execute(sql)
+            try:
+                cursor = con.cursor()
+                sql = f"EXEC CT_INSERT_SERVER_INFO '{flag}', '{self.serverid}', '{v}'"
+                cursor.execute(sql)
+                con.commit()
+                cnt += 1
+            except:
+                return False
+        return cnt == len(var)

@@ -62,8 +62,25 @@ class InsertSvr(QDialog):
         self.main_layout.insertLayout(self.disk_cnt + self.svc_cnt + self.task_cnt + 4, layout)
 
     def accepted(self):
-        from ui.CommonUI import MessageBoxWarning
-        from func.InsertSvr import InsertSvr
+        from ui.CommonUI import MessageBoxWarning, MessageBoxInfo
+
+        def insert_server():
+            from func.InsertSvr import InsertSvr
+
+            insert = InsertSvr(host, ip)
+            id = insert.insert_svr(int(wdef), int(sys_code), int(gb_code))
+            if id != -1:
+                if insert.insert_svr_info('DISK', disk) \
+                        and insert.insert_svr_info('SERVICE', svc) \
+                        and insert.insert_svr_info('TASK', task):
+                    return True
+                else:
+                    from . import DeleteSvr
+                    DeleteSvr.delete_func(id)
+                    return False
+            else:
+                return False
+
         ip = self.ih_ip_le.text()
         host = self.ih_host_le.text()
         disk = [self.disk_le.text().upper()]
@@ -75,16 +92,16 @@ class InsertSvr(QDialog):
         gb_code = self.gb_list[self.code_gb_combo.currentIndex()][0]
 
         if not ip or not host:
-            self.ih_msgbox = MessageBoxWarning("Warning", "IP와 호스트명은 필수 입력항목입니다.")
-            self.ih_msgbox.show()
+            self.msgbox = MessageBoxWarning("IP와 호스트명은 필수 입력항목입니다.")
+            self.msgbox.show()
 
         elif not disk:
-            self.disk_msgbox = MessageBoxWarning("Warning", "디스크는 필수 입력항목입니다.")
-            self.disk_msgbox.show()
+            self.msgbox = MessageBoxWarning("디스크는 필수 입력항목입니다.")
+            self.msgbox.show()
 
         elif wdef == "2":
-            self.wdef_msgbox = MessageBoxWarning("Warning", "윈도우 디펜더는 필수 입력항목입니다.")
-            self.wdef_msgbox.show()
+            self.msgbox = MessageBoxWarning("윈도우 디펜더는 필수 입력항목입니다.")
+            self.msgbox.show()
 
         else:
             if self.disk_var:
@@ -97,15 +114,13 @@ class InsertSvr(QDialog):
                 for i in self.task_var:
                     task.append(i.text())
 
-        print(1)
-        insert = InsertSvr(host, ip)
-        print(2)
-        insert.insert_svr(int(wdef), int(sys_code), int(gb_code))
-        print(3)
-        insert.insert_svr_info('DISK', disk)
-        insert.insert_svr_info('SERVICE', svc)
-        insert.insert_svr_info('TASK', task)
-        print(4)
+        if insert_server():
+            self.msgbox = MessageBoxInfo("서버 정보를 등록했습니다.")
+            self.msgbox.show()
+            self.close()
+        else:
+            self.msgbox = MessageBoxWarning("서버 정보 등록에 실패했습니다.")
+            self.msgbox.show()
 
     def rejected(self):
         self.close()

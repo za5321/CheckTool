@@ -25,8 +25,16 @@ class PushButton(QtWidgets.QPushButton):
 
 
 class MessageBoxWarning(QtWidgets.QMessageBox):
-    def __init__(self, title, text):
+    def __init__(self, text):
         super().__init__()
-        self.setWindowTitle(title)
+        self.setWindowTitle("Warning")
         self.setText(text)
         self.setWindowIcon(QIcon('icons\Warning.png'))
+
+
+class MessageBoxInfo(QtWidgets.QMessageBox):
+    def __init__(self, text):
+        super().__init__()
+        self.setWindowTitle("Information")
+        self.setText(text)
+        self.setWindowIcon(QIcon('icons\Info.png'))

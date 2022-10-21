@@ -74,10 +74,10 @@ class ManageCode(QDialog):
                 self.ui.sys_code_le.clear()
                 self.ui.sys_name_le.clear()
             except pymssql.IntegrityError:
-                msgbox = MessageBoxWarning("Warning", "이미 존재하는 코드입니다.")
+                msgbox = MessageBoxWarning("이미 존재하는 코드입니다.")
                 msgbox.exec()
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
 
     def click_sys_upd_btn(self):
@@ -96,7 +96,7 @@ class ManageCode(QDialog):
             self.ui.sys_code_le.clear()
             self.ui.sys_name_le.clear()
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
 
     def click_sys_del_btn(self):
@@ -114,7 +114,7 @@ class ManageCode(QDialog):
             self.ui.sys_code_le.clear()
             self.ui.sys_name_le.clear()
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
 
     def click_gb_ins_btn(self):
@@ -135,10 +135,10 @@ class ManageCode(QDialog):
                 self.ui.gb_name_le.clear()
 
             except pymssql.IntegrityError:
-                msgbox = MessageBoxWarning("Warning", "이미 존재하는 코드입니다.")
+                msgbox = MessageBoxWarning("이미 존재하는 코드입니다.")
                 msgbox.exec()
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
 
     def click_gb_upd_btn(self):
@@ -158,7 +158,7 @@ class ManageCode(QDialog):
             self.ui.gb_name_le.clear()
 
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
 
     def click_gb_del_btn(self):
@@ -176,5 +176,5 @@ class ManageCode(QDialog):
             self.ui.gb_code_le.clear()
             self.ui.gb_name_le.clear()
         else:
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()

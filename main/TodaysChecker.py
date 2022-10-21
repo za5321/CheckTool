@@ -24,7 +24,7 @@ class TodaysChecker(QDialog):
         checker: str = self.ui.lineEdit1.text()
         if not checker:
             from ui.CommonUI import MessageBoxWarning
-            msgbox = MessageBoxWarning("Warning", "내용을 입력해주세요.")
+            msgbox = MessageBoxWarning("내용을 입력해주세요.")
             msgbox.exec()
             TodaysChecker(self)
         else:
