@@ -58,7 +58,7 @@ class GetSvrInfo:
 
         def is_service(id: int) -> str:
             cursor = con.cursor()
-            sql = f"EXEC DC_SELECT_SERVERINFO {str(id)}, 'svc'"
+            sql = f"EXEC DC_SELECT_SERVER_INFO {str(id)}, 'svc'"
             cursor.execute(sql)
             row = cursor.fetchall()
             return row[0][0].strip()
@@ -105,7 +105,7 @@ class GetSvrInfo:
 
         def is_task(id: int) -> str:
             cursor = con.cursor()
-            sql = f"EXEC DC_SELECT_SERVERINFO {str(id)}, 'task'"
+            sql = f"EXEC DC_SELECT_SERVER_INFO {str(id)}, 'task'"
             cursor.execute(sql)
             row = cursor.fetchall()
             return row[0][0]
@@ -126,7 +126,7 @@ class GetSvrInfo:
     def get_windefender(svr_id: int, date: datetime) -> list:
         def is_wdef(id: int) -> str:
             cursor = con.cursor()
-            sql = f"EXEC DC_SELECT_SERVERINFO {str(id)}, 'wdef'"
+            sql = f"EXEC DC_SELECT_SERVER_INFO {str(id)}, 'wdef'"
             cursor.execute(sql)
             row = cursor.fetchall()
             return row[0][0]
