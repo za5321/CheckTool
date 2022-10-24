@@ -61,7 +61,7 @@ class GetSvrInfo:
             sql = f"EXEC DC_SELECT_SERVER_INFO {str(id)}, 'svc'"
             cursor.execute(sql)
             row = cursor.fetchall()
-            return row[0][0].strip()
+            return row[0][0].strip() if row else None
 
         if not is_service(svr_id):
             service.append(("NONE", "-1"))
@@ -108,7 +108,7 @@ class GetSvrInfo:
             sql = f"EXEC DC_SELECT_SERVER_INFO {str(id)}, 'task'"
             cursor.execute(sql)
             row = cursor.fetchall()
-            return row[0][0]
+            return row[0][0] if row else None
 
         if is_task(svr_id) == " ":
             task.append(("NONE", "-1"))
