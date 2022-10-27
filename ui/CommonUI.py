@@ -37,4 +37,4 @@ class MessageBoxInfo(QtWidgets.QMessageBox):
         super().__init__()
         self.setWindowTitle("Information")
         self.setText(text)
-        self.setWindowIcon(QIcon('icons\Info.ico'))
+        self.setWindowIcon(QIcon('icons\Info.png'))

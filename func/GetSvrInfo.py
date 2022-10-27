@@ -110,7 +110,7 @@ class GetSvrInfo:
             row = cursor.fetchall()
             return row[0][0] if row else None
 
-        if is_task(svr_id) == " ":
+        if not is_task(svr_id):
             task.append(("NONE", "-1"))
         else:
             cursor = con.cursor()
