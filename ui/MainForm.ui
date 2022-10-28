@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1395</width>
+    <width>1401</width>
     <height>612</height>
    </rect>
   </property>
@@ -14,6 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">#centralwidget {
+	background: white;
+}</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QWidget" name="widget" native="true">
@@ -25,6 +30,11 @@
          <width>1191</width>
          <height>551</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#tableWgt1 {
+	border: 2px solid rgb(203, 235, 255);
+}</string>
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
@@ -158,10 +168,16 @@
        <property name="geometry">
         <rect>
          <x>1230</x>
-         <y>100</y>
+         <y>500</y>
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
        </property>
        <property name="text">
         <string>서버 삭제</string>
@@ -176,6 +192,12 @@
          <height>31</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
+       </property>
        <property name="text">
         <string>새로고침</string>
        </property>
@@ -184,10 +206,16 @@
        <property name="geometry">
         <rect>
          <x>1230</x>
-         <y>60</y>
+         <y>460</y>
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
        </property>
        <property name="text">
         <string>서버 추가</string>
@@ -201,6 +229,12 @@
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#toolBtn4 {
+	border: 2px solid rgb(235, 203, 255);
+	background: rgb(235, 203, 255);
+}</string>
        </property>
        <property name="text">
         <string>지난 날짜 불러오기</string>
@@ -223,13 +257,38 @@
        <property name="geometry">
         <rect>
          <x>1230</x>
-         <y>140</y>
+         <y>540</y>
          <width>131</width>
          <height>31</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
+       </property>
        <property name="text">
         <string>코드 관리</string>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="toolBtn6">
+       <property name="geometry">
+        <rect>
+         <x>1230</x>
+         <y>60</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>Excel 열기</string>
        </property>
       </widget>
      </widget>
