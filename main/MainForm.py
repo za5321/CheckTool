@@ -8,7 +8,7 @@ class MainForm(QMainWindow):
     def __init__(self, parent):
         from PyQt5.QtCore import QDate
         from PyQt5.QtGui import QIcon
-        from PyQt5.QtWidgets import QHeaderView
+        from PyQt5.QtWidgets import QHeaderView, QFrame
         from PyQt5 import uic
 
         QMainWindow.__init__(self, parent)
@@ -17,6 +17,8 @@ class MainForm(QMainWindow):
 
         self.ui = uic.loadUi("ui\MainForm.ui")
         self.ui.tableWgt1.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        self.ui.tableWgt1.horizontalHeader().setStyleSheet("QHeaderView::section {background: rgb(240,255,255); border: 1px solid rgb(203, 235, 255);}")
+
         self.ui.setWindowTitle(self.get_config("window_title"))
         self.ui.setWindowIcon(QIcon(self.get_config("icon")))
         self.ui.dateEdit1.setDate(QDate.currentDate())
