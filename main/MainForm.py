@@ -29,8 +29,8 @@ class MainForm(QMainWindow):
         self.ui.toolBtn3.clicked.connect(self.click_toolBtn3)
         self.ui.toolBtn4.clicked.connect(self.click_toolBtn4)
         self.ui.toolBtn5.clicked.connect(self.click_toolBtn5)
+        #self.ui.toolBtn6.clicked.connect(self.click_toolBtn6)
         self.ui.tableWgt1.clicked.connect(self.click_tableWgt1)
-
         self.ui.tableWgt1.installEventFilter(self)
 
     @staticmethod
@@ -126,6 +126,10 @@ class MainForm(QMainWindow):
         from main.btn.ManageCode import ManageCode
         ManageCode(self)
 
+    '''def click_toolBtn6(self):
+        """Download Excel file"""
+        self.qtablewidget_to_excel()'''
+
     def get_svrid(self, current_row: int) -> int:
         try:
             return next(key for key, value in self.svr_current_row.items() if value == current_row)
@@ -180,3 +184,56 @@ class MainForm(QMainWindow):
         copy_html.append("\t</table>\n")
         copy_html.append("</html>\n")
         return "".join(copy_html)
+
+    '''def qtablewidget_to_excel(self):
+        import openpyxl
+        from openpyxl import styles
+        from datetime import date
+
+        def merge(row: str, col: str, text: str, *color: str):
+            ws[row] = text
+            ws.merge_cells(f"{row}:{col}")
+
+        days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+        today = str(date.today()) + " " + days[date.today().weekday()]
+
+        if self.get_config("license") == "JAEMU":
+            if date.today().day == 1:
+                wb = openpyxl.Workbook()
+                ws = wb.active
+
+                merge('A1', 'H6', today+"\n"+self.get_config("window_title"))
+                merge('I1', 'I2', '담당자')
+                merge('I3', 'I6', '')
+                merge('J1', 'J2', '파트장')
+                merge('J3', 'J6', '')
+                merge('A7', 'J7', '')
+                merge('A8', 'J8', '장애 및 특이사항 없음')
+                merge('A9', 'J9', '총용량 입력 X, 남은 용량만 입력, 사용량 85% 이상이면 노란색으로 자동 표시됨, 해당 란에 서버 명 표시')
+
+                merge('A10', 'E10', '1. SAP 점검')
+                merge('A11', 'D11', '1-1. SMLG(CCMS)')
+                merge('A12', 'D12', '1-2. SM66(System Work Process Overview)')
+                merge('A13', 'D13', '1-3. SM12(Select lock entry)')
+                merge('A14', 'D14', '1-4. SM37(Job scheduling)')
+                merge('A15', 'D15', '1-5. SM21(System Log)')
+                merge('A16', 'D16', '1-6. DB02(DB Performance)')
+                merge('A17', 'D17', '1-7. DB13(Database Log)')
+                merge('A18', 'D18', '1-8. ST22(ABAP runtime errors)')
+                merge('A19', 'D19', '1-9. AL11(Firm banking Log)')
+                merge('A20', 'D20', '1-10. SU01(User Maintenance)')
+                for i in range(11, 20):
+                    ws[f'E{i}'] = "정상"
+                ws['E20'] = ""
+
+
+
+
+
+                wb.save('D:\\test.xlsx')
+
+            else:
+                wb = openpyxl.load_workbook('D:\\202210_전산재무담당_모니터링.xlsx')
+                ws = wb.create_sheet(f'{date.today()}')
+                wb.save('D:\\202210_전산재무담당_모니터링.xlsx')
+            print("finished")'''
