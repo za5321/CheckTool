@@ -27,6 +27,12 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>NanumGothic</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">#buttonBox *[text=&quot;확인&quot;]{
 	background: rgb(203, 235, 255)

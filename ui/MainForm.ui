@@ -58,7 +58,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -71,7 +71,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -84,7 +84,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -97,7 +97,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -110,7 +110,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -123,7 +123,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -136,7 +136,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -149,7 +149,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -162,7 +162,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -175,7 +175,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -188,7 +188,7 @@ QTableWidget QHeaderView {
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>NanumGothic</family>
           <pointsize>10</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -204,6 +204,12 @@ QTableWidget QHeaderView {
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton {
@@ -224,6 +230,12 @@ QTableWidget QHeaderView {
          <height>31</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QToolButton {
 	border: 2px solid rgb(203, 235, 255);
@@ -243,6 +255,12 @@ QTableWidget QHeaderView {
          <height>31</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QToolButton {
 	border: 2px solid rgb(203, 235, 255);
@@ -261,6 +279,12 @@ QTableWidget QHeaderView {
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>10</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">#toolBtn4 {
@@ -293,6 +317,12 @@ QTableWidget QHeaderView {
          <width>131</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton {

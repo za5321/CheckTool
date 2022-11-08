@@ -15,6 +15,7 @@ class ManageCode(QDialog):
 
         for i, j in enumerate(self.get_config("tab_text")):
             self.ui.tabWidget.setTabText(i, j)
+            self.ui.tabWidget.setStyleSheet("QTabBar::tab::selected{background: rgb(250, 255, 255);} QTabBar::tab{background: rgb(203, 235, 255);}")
         self.ui.show()
 
         self.sys_list, self.gb_list = [], []
