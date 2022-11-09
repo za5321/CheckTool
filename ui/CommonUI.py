@@ -5,6 +5,13 @@ from PyQt5.QtGui import QIcon
 class Lineedit(QtWidgets.QLineEdit):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet("QLineEdit {border: 2px solid rgb(203, 235, 255);background: rgb(250, 255, 255);}")
+
+
+class Combobox(QtWidgets.QComboBox):
+    def __init__(self):
+        super().__init__()
+        self.setStyleSheet("QComboBox {background:white; border: 2px solid rgb(203, 235, 255);} QListView {background: rgb(203,235,255);}")
 
 
 class Layout(QtWidgets.QGridLayout):
@@ -22,6 +29,16 @@ class PushButton(QtWidgets.QPushButton):
     def __init__(self, text):
         super().__init__()
         self.setText(text)
+
+
+class ToolButton(QtWidgets.QToolButton):
+    def __init__(self, text, color):
+        super().__init__()
+        self.setText(text)
+        if color == "blue":
+            self.setStyleSheet("QToolButton {border: 2px solid rgb(203, 235, 255);background: rgb(203, 235, 255);}")
+        elif color == "red":
+            self.setStyleSheet("QToolButton {border: 2px solid rgb(235, 203, 255);background: rgb(235, 203, 255);}")
 
 
 class MessageBoxWarning(QtWidgets.QMessageBox):

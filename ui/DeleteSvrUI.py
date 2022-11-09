@@ -4,16 +4,17 @@ def get_config(flag: str):
 
 
 def ui(dialog):
-    from ui.CommonUI import Layout, Label, Lineedit, PushButton
+    from ui.CommonUI import Layout, Label, Lineedit, ToolButton
     from PyQt5.QtGui import QIcon
 
     dialog.setWindowTitle(get_config("window_title"))
     dialog.setWindowIcon(QIcon(get_config("icon")))
+    dialog.setStyleSheet("QDialog {background: white;}")
 
     dialog.layout = Layout()
     dialog.label = Label("호스트명")
     dialog.linedit = Lineedit()
-    dialog.button = PushButton("삭제")
+    dialog.button = ToolButton("삭제", "blue")
     dialog.button.clicked.connect(dialog.click_delete_btn)
 
     dialog.layout.addWidget(dialog.label, 0, 0)

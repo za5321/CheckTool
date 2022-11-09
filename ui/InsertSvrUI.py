@@ -5,12 +5,13 @@ def get_config(flag: str):
 
 def ui(dialog):
     from func.GetSYSGB import GetSYSGB
-    from ui.CommonUI import Layout, Label, Lineedit
-    from PyQt5.QtWidgets import QVBoxLayout, QComboBox, QDialogButtonBox, QPushButton, QRadioButton, QRadioButton
+    from ui.CommonUI import Layout, Label, Lineedit, ToolButton, Combobox
+    from PyQt5.QtWidgets import QVBoxLayout, QComboBox, QDialogButtonBox, QRadioButton
     from PyQt5.QtGui import QIcon
 
     dialog.setWindowTitle(get_config("window_title"))
     dialog.setWindowIcon(QIcon(get_config("icon")))
+    dialog.setStyleSheet("QDialog {background: white;}")
 
     dialog.main_layout = QVBoxLayout()
     dialog.code_layout = Layout()
@@ -21,14 +22,14 @@ def ui(dialog):
     dialog.win_layout = Layout()
 
     dialog.code_sys_lbl = Label("시스템")
-    dialog.code_sys_combo = QComboBox()
+    dialog.code_sys_combo = Combobox()
     dialog.sys_list = GetSYSGB.get_syslist()
     for i in dialog.sys_list:
         dialog.code_sys_combo.addItem(i[1])
     dialog.code_sys_combo.setFixedWidth(120)
 
     dialog.code_gb_lbl = Label("구분")
-    dialog.code_gb_combo = QComboBox()
+    dialog.code_gb_combo = Combobox()
     dialog.gb_list = GetSYSGB.get_gblist()
     for i in dialog.gb_list:
         dialog.code_gb_combo.addItem(i[1])
@@ -47,23 +48,24 @@ def ui(dialog):
     dialog.disk_nm_lbl = Label("디스크")
     dialog.disk_le = Lineedit()
     dialog.disk_ex_lbl = Label("예: C")
-    dialog.disk_pushbtn = QPushButton("추가")
+    dialog.disk_pushbtn = ToolButton("추가", "blue")
     dialog.disk_pushbtn.clicked.connect(dialog.click_disk_pushbtn)
 
     dialog.svc_nm_lbl = Label("서비스")
     dialog.sys_le = Lineedit()
     dialog.sys_ex_lbl = Label("예: WebtoB")
-    dialog.sys_pushbtn = QPushButton("추가")
+    dialog.sys_pushbtn = ToolButton("추가", "red")
     dialog.sys_pushbtn.clicked.connect(dialog.click_svc_pushbtn)
 
     dialog.task_nm_lbl = Label("작업스케줄러")
     dialog.task_le = Lineedit()
     dialog.task_ex_lbl = Label("예: HRCollector")
-    dialog.task_pushbtn = QPushButton("추가")
+    dialog.task_pushbtn = ToolButton("추가", "blue")
     dialog.task_pushbtn.clicked.connect(dialog.click_task_pushbtn)
 
     dialog.wdef_nm_lbl = Label("윈도우 디펜더")
     dialog.wdef_yes_radio = QRadioButton("사용", dialog)
+    #dialog.wdef_yes_radio.setStyleSheet("QRadioButton {color: red}")
     dialog.wdef_no_radio = QRadioButton("미사용", dialog)
     dialog.wdef_yes_radio.clicked.connect(dialog.click_wdef_radio)
     dialog.wdef_no_radio.clicked.connect(dialog.click_wdef_radio)
