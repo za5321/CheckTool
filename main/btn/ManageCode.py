@@ -12,6 +12,7 @@ class ManageCode(QDialog):
         self.ui = uic.loadUi("ui\ManageCode.ui")
         self.ui.setWindowTitle(self.get_config("window_title"))
         self.ui.setWindowIcon(QIcon(self.get_config("icon")))
+        self.ui.setGeometry(700, 350, 280, 290)
 
         for i, j in enumerate(self.get_config("tab_text")):
             self.ui.tabWidget.setTabText(i, j)

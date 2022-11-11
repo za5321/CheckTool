@@ -10,6 +10,7 @@ def ui(dialog):
     dialog.setWindowTitle(get_config("window_title"))
     dialog.setWindowIcon(QIcon(get_config("icon")))
     dialog.setStyleSheet("QDialog {background: white;}")
+    dialog.setGeometry(700, 350, 150, 50)
 
     dialog.layout = Layout()
     dialog.label = Label("호스트명")

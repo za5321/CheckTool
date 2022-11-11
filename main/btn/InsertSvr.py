@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QDialog
+from ui.CommonUI import Layout, Label, Lineedit
 import pymssql
 
 
@@ -17,49 +18,46 @@ class InsertSvr(QDialog):
         return "1" if self.wdef_yes_radio.isChecked() else "0" if self.wdef_no_radio.isChecked() else "2"
 
     def click_disk_pushbtn(self):
-        from ui.CommonUI import Layout, Label, Lineedit
-
         self.disk_cnt += 1
         self.disk_var.append(f"diskle{self.disk_cnt}")
         label = Label("디스크")
         label.setContentsMargins(0, 0, 42, 0)
         self.disk_var[self.disk_cnt - 1] = Lineedit()
+        self.disk_var[self.disk_cnt - 1].setFixedWidth(170)
         self.disk_var[self.disk_cnt - 1].setContentsMargins(0, 0, 175, 0)
         layout = Layout()
 
         layout.addWidget(label, 0, 0)
         layout.addWidget(self.disk_var[self.disk_cnt - 1], 0, 1)
-        self.main_layout.insertLayout(self.disk_cnt + 2, layout)
+        self.main_layout.insertLayout(self.disk_cnt + 3, layout)
 
     def click_svc_pushbtn(self):
-        from ui.CommonUI import Layout, Label, Lineedit
-
         self.svc_cnt += 1
         self.svc_var.append(f"svcle{self.svc_cnt}")
         label = Label("서비스")
         label.setContentsMargins(0, 0, 42, 0)
         self.svc_var[self.svc_cnt - 1] = Lineedit()
+        self.svc_var[self.svc_cnt - 1].setFixedWidth(170)
         self.svc_var[self.svc_cnt - 1].setContentsMargins(0, 0, 175, 0)
         layout = Layout()
 
         layout.addWidget(label, 0, 0)
         layout.addWidget(self.svc_var[self.svc_cnt - 1], 0, 1)
-        self.main_layout.insertLayout(self.disk_cnt + self.svc_cnt + 3, layout)
+        self.main_layout.insertLayout(self.disk_cnt + self.svc_cnt + 4, layout)
 
     def click_task_pushbtn(self):
-        from ui.CommonUI import Layout, Label, Lineedit
-
         self.task_cnt += 1
         self.task_var.append(f"taskle{self.task_cnt}")
         label = Label("작업스케줄러")
         label.setContentsMargins(0, 0, 6, 0)
         self.task_var[self.task_cnt - 1] = Lineedit()
+        self.task_var[self.task_cnt - 1].setFixedWidth(170)
         self.task_var[self.task_cnt - 1].setContentsMargins(0, 0, 175, 0)
         layout = Layout()
 
         layout.addWidget(label, 0, 0)
         layout.addWidget(self.task_var[self.task_cnt - 1], 0, 1)
-        self.main_layout.insertLayout(self.disk_cnt + self.svc_cnt + self.task_cnt + 4, layout)
+        self.main_layout.insertLayout(self.disk_cnt + self.svc_cnt + self.task_cnt + 5, layout)
 
     def accepted(self):
         from ui.CommonUI import MessageBoxWarning, MessageBoxInfo

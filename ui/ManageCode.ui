@@ -79,6 +79,9 @@
 	background: rgb(250, 255, 255);
 }</string>
      </property>
+     <property name="placeholderText">
+      <string>예: 100</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="sys_name_le">
      <property name="geometry">
@@ -99,6 +102,9 @@
 	border: 2px solid rgb(203, 235, 255);
 	background: rgb(250, 255, 255);
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>예: SAP</string>
      </property>
     </widget>
     <widget class="QToolButton" name="sys_upd_btn">
@@ -226,6 +232,9 @@
 	background: rgb(250, 255, 255);
 }</string>
      </property>
+     <property name="placeholderText">
+      <string>예: WEB</string>
+     </property>
     </widget>
     <widget class="QToolButton" name="gb_del_btn">
      <property name="geometry">
@@ -271,6 +280,9 @@
 	border: 2px solid rgb(203, 235, 255);
 	background: rgb(250, 255, 255);
 }</string>
+     </property>
+     <property name="placeholderText">
+      <string>예: 200</string>
      </property>
     </widget>
     <widget class="QToolButton" name="gb_upd_btn">

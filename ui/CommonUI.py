@@ -5,13 +5,14 @@ from PyQt5.QtGui import QIcon
 class Lineedit(QtWidgets.QLineEdit):
     def __init__(self):
         super().__init__()
+        #self.setFixedWidth(200)
         self.setStyleSheet("QLineEdit {border: 2px solid rgb(203, 235, 255);background: rgb(250, 255, 255);}")
 
 
 class Combobox(QtWidgets.QComboBox):
     def __init__(self):
         super().__init__()
-        self.setStyleSheet("QComboBox {background:white; border: 2px solid rgb(203, 235, 255);} QListView {background: rgb(203,235,255);}")
+        self.setStyleSheet("QComboBox {background: rgb(203,235,255);} QListView {background:white; border: 2px solid rgb(203, 235, 255);}")
 
 
 class Layout(QtWidgets.QGridLayout):
@@ -22,6 +23,7 @@ class Layout(QtWidgets.QGridLayout):
 class Label(QtWidgets.QLabel):
     def __init__(self, text):
         super().__init__()
+        self.setFixedWidth(100)
         self.setText(text)
 
 
