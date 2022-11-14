@@ -17,7 +17,12 @@ class MainForm(QMainWindow):
 
         self.ui = uic.loadUi("ui\MainForm.ui")
         self.ui.tableWgt1.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeToContents)
-        self.ui.tableWgt1.horizontalHeader().setStyleSheet("QHeaderView::section {background: rgb(240,255,255); border: 1px solid rgb(203, 235, 255);}")
+        self.ui.tableWgt1.horizontalHeader().setFixedHeight(40)
+        self.ui.tableWgt1.horizontalHeader().setStyleSheet("QHeaderView::section {"
+                                                           "background: rgb(240,255,255); "
+                                                           "border: 1px solid rgb(203, 235, 255);"
+                                                           "font-weight: 600;"
+                                                           "color: rgb(95, 95, 95);}")
 
         self.ui.setWindowTitle(self.get_config("window_title"))
         self.ui.setWindowIcon(QIcon(self.get_config("icon")))

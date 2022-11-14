@@ -40,7 +40,7 @@ class ToolButton(QtWidgets.QToolButton):
         if color == "blue":
             self.setStyleSheet("QToolButton {border: 2px solid rgb(203, 235, 255);background: rgb(203, 235, 255);}")
         elif color == "red":
-            self.setStyleSheet("QToolButton {border: 2px solid rgb(235, 203, 255);background: rgb(235, 203, 255);}")
+            self.setStyleSheet("QToolButton {border: 2px solid rgb(255, 155, 130);background: rgb(255, 155, 130);}")
 
 
 class MessageBoxWarning(QtWidgets.QMessageBox):

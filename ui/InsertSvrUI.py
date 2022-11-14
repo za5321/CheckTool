@@ -59,7 +59,7 @@ def ui(dialog):
     dialog.sys_le = Lineedit(170)
     #dialog.sys_le.setFixedWidth(170)
     dialog.sys_ex_lbl = Label("예: WebtoB", 100)
-    dialog.sys_pushbtn = ToolButton("추가", "red")
+    dialog.sys_pushbtn = ToolButton("추가", "blue")
     dialog.sys_pushbtn.clicked.connect(dialog.click_svc_pushbtn)
 
     dialog.task_nm_lbl = Label("작업스케줄러", 100)

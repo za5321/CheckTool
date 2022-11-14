@@ -315,8 +315,8 @@ QTableWidget QHeaderView {
        </property>
        <property name="styleSheet">
         <string notr="true">#toolBtn4 {
-	border: 2px solid rgb(235, 203, 255);
-	background: rgb(235, 203, 255);
+	border: 2px solid rgb(255, 155, 130);
+	background: rgb(255, 155, 130);
 }</string>
        </property>
        <property name="text">
