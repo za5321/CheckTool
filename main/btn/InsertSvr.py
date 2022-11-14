@@ -20,9 +20,9 @@ class InsertSvr(QDialog):
     def click_disk_pushbtn(self):
         self.disk_cnt += 1
         self.disk_var.append(f"diskle{self.disk_cnt}")
-        label = Label("디스크")
+        label = Label("디스크", 100)
         label.setContentsMargins(0, 0, 42, 0)
-        self.disk_var[-1] = Lineedit()
+        self.disk_var[-1] = Lineedit(0)
         #self.disk_var[self.disk_cnt - 1].setFixedWidth(170)
         self.disk_var[self.disk_cnt - 1].setContentsMargins(0, 0, 151, 0)
         layout = Layout()
@@ -34,9 +34,9 @@ class InsertSvr(QDialog):
     def click_svc_pushbtn(self):
         self.svc_cnt += 1
         self.svc_var.append(f"svcle{self.svc_cnt}")
-        label = Label("서비스")
+        label = Label("서비스", 100)
         label.setContentsMargins(0, 0, 42, 0)
-        self.svc_var[self.svc_cnt - 1] = Lineedit()
+        self.svc_var[self.svc_cnt - 1] = Lineedit(0)
         #self.svc_var[self.svc_cnt - 1].setFixedWidth(170)
         self.svc_var[self.svc_cnt - 1].setContentsMargins(0, 0, 151, 0)
         layout = Layout()
@@ -48,9 +48,9 @@ class InsertSvr(QDialog):
     def click_task_pushbtn(self):
         self.task_cnt += 1
         self.task_var.append(f"taskle{self.task_cnt}")
-        label = Label("작업스케줄러")
+        label = Label("작업스케줄러", 100)
         label.setContentsMargins(0, 0, 6, 0)
-        self.task_var[self.task_cnt - 1] = Lineedit()
+        self.task_var[self.task_cnt - 1] = Lineedit(0)
         #self.task_var[self.task_cnt - 1].setFixedWidth(170)
         self.task_var[self.task_cnt - 1].setContentsMargins(0, 0, 151, 0)
         layout = Layout()

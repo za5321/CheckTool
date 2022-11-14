@@ -3,9 +3,9 @@ from PyQt5.QtGui import QIcon
 
 
 class Lineedit(QtWidgets.QLineEdit):
-    def __init__(self):
+    def __init__(self, width: int):
         super().__init__()
-        #self.setFixedWidth(170)
+        self.setFixedWidth(width) if width else None
         self.setStyleSheet("QLineEdit {border: 2px solid rgb(203, 235, 255);background: rgb(250, 255, 255);}")
 
 
@@ -21,9 +21,9 @@ class Layout(QtWidgets.QGridLayout):
 
 
 class Label(QtWidgets.QLabel):
-    def __init__(self, text):
+    def __init__(self, text: str, width: int):
         super().__init__()
-        self.setFixedWidth(100)
+        self.setFixedWidth(width) if width else None
         self.setText(text)
 
 
