@@ -5,7 +5,7 @@ from PyQt5.QtGui import QIcon
 class Lineedit(QtWidgets.QLineEdit):
     def __init__(self):
         super().__init__()
-        #self.setFixedWidth(200)
+        #self.setFixedWidth(170)
         self.setStyleSheet("QLineEdit {border: 2px solid rgb(203, 235, 255);background: rgb(250, 255, 255);}")
 
 
