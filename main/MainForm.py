@@ -1,6 +1,7 @@
 # import collections
 
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5 import QtCore
 import datetime
 
 
@@ -37,6 +38,9 @@ class MainForm(QMainWindow):
         #self.ui.toolBtn6.clicked.connect(self.click_toolBtn6)
         self.ui.tableWgt1.clicked.connect(self.click_tableWgt1)
         self.ui.tableWgt1.installEventFilter(self)
+
+        #resized = QtCore.pyqtSignal()
+        #resized.connect(self.resize_check)
 
     @staticmethod
     def get_config(flag: str):
@@ -144,6 +148,13 @@ class MainForm(QMainWindow):
                 if value < current_row:
                     val = max(val, value)
             return next(key for key, value in self.svr_current_row.items() if value == val)
+
+    '''def resizeEvent(self, event):
+        self.resized.emit()
+        return super(MainForm, self).resizeEvent(event)
+
+    def resize_check(self):
+        self.ui.width = self.ui.centralWidget.frameSize().width() - self.ui.verticalLayout.maximumSize().width()'''
 
     def eventFilter(self, source, event):
         """To copy and paste selected items in tableWgt1"""

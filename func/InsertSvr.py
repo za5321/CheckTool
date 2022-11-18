@@ -31,12 +31,13 @@ class InsertSvr():
     def insert_svr_info(self, flag: str, var: list) -> bool:
         cnt = 0
         for v in var:
-            try:
-                cursor = con.cursor()
-                sql = f"EXEC CT_INSERT_SERVER_INFO '{flag}', '{self.serverid}', '{v}'"
-                cursor.execute(sql)
-                con.commit()
-                cnt += 1
-            except:
-                return False
+            if v:
+                try:
+                    cursor = con.cursor()
+                    sql = f"EXEC CT_INSERT_SERVER_INFO '{flag}', '{self.serverid}', '{v}'"
+                    cursor.execute(sql)
+                    con.commit()
+                    cnt += 1
+                except:
+                    return False
         return cnt == len(var)

@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1382</width>
+    <width>1360</width>
     <height>600</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1360</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1360</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -45,8 +63,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1200</width>
-         <height>580</height>
+         <width>1181</width>
+         <height>571</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -226,7 +244,7 @@ QTableWidget QHeaderView {
       <widget class="QToolButton" name="toolBtn3">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>500</y>
          <width>131</width>
          <height>31</height>
@@ -251,7 +269,7 @@ QTableWidget QHeaderView {
       <widget class="QToolButton" name="toolBtn1">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>0</y>
          <width>131</width>
          <height>31</height>
@@ -276,7 +294,7 @@ QTableWidget QHeaderView {
       <widget class="QToolButton" name="toolBtn2">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>460</y>
          <width>131</width>
          <height>31</height>
@@ -301,7 +319,7 @@ QTableWidget QHeaderView {
       <widget class="QToolButton" name="toolBtn4">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>290</y>
          <width>131</width>
          <height>31</height>
@@ -326,7 +344,7 @@ QTableWidget QHeaderView {
       <widget class="QDateEdit" name="dateEdit1">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>260</y>
          <width>110</width>
          <height>22</height>
@@ -339,7 +357,7 @@ QTableWidget QHeaderView {
       <widget class="QToolButton" name="toolBtn5">
        <property name="geometry">
         <rect>
-         <x>1220</x>
+         <x>1200</x>
          <y>540</y>
          <width>131</width>
          <height>31</height>
