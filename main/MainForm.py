@@ -35,7 +35,7 @@ class MainForm(QMainWindow):
         self.ui.toolBtn3.clicked.connect(self.click_toolBtn3)
         self.ui.toolBtn4.clicked.connect(self.click_toolBtn4)
         self.ui.toolBtn5.clicked.connect(self.click_toolBtn5)
-        #self.ui.toolBtn6.clicked.connect(self.click_toolBtn6)
+        self.ui.toolBtn6.clicked.connect(self.click_toolBtn6)
         self.ui.tableWgt1.clicked.connect(self.click_tableWgt1)
         self.ui.tableWgt1.installEventFilter(self)
 
@@ -135,9 +135,9 @@ class MainForm(QMainWindow):
         from main.btn.ManageCode import ManageCode
         ManageCode(self)
 
-    '''def click_toolBtn6(self):
+    def click_toolBtn6(self):
         """Download Excel file"""
-        self.qtablewidget_to_excel()'''
+        self.qtablewidget_to_excel()
 
     def get_svrid(self, current_row: int) -> int:
         try:
@@ -201,7 +201,7 @@ class MainForm(QMainWindow):
         copy_html.append("</html>\n")
         return "".join(copy_html)
 
-    '''def qtablewidget_to_excel(self):
+    def qtablewidget_to_excel(self):
         import openpyxl
         from openpyxl import styles
         from datetime import date
@@ -214,7 +214,7 @@ class MainForm(QMainWindow):
         today = str(date.today()) + " " + days[date.today().weekday()]
 
         if self.get_config("license") == "JAEMU":
-            if date.today().day == 1:
+            if date.today().day == 16:
                 wb = openpyxl.Workbook()
                 ws = wb.active
 
@@ -242,14 +242,10 @@ class MainForm(QMainWindow):
                     ws[f'E{i}'] = "정상"
                 ws['E20'] = ""
 
-
-
-
-
                 wb.save('D:\\test.xlsx')
 
             else:
                 wb = openpyxl.load_workbook('D:\\202210_전산재무담당_모니터링.xlsx')
                 ws = wb.create_sheet(f'{date.today()}')
                 wb.save('D:\\202210_전산재무담당_모니터링.xlsx')
-            print("finished")'''
+            print("finished")

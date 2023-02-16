@@ -379,6 +379,31 @@ QTableWidget QHeaderView {
         <string>코드 관리</string>
        </property>
       </widget>
+      <widget class="QToolButton" name="toolBtn6">
+       <property name="geometry">
+        <rect>
+         <x>1200</x>
+         <y>50</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>NanumGothic</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 2px solid rgb(203, 235, 255);
+	background: rgb(203, 235, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>엑셀 추출</string>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
