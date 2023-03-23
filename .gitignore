@@ -11,3 +11,4 @@ UpdateSvr.ui
 sql/
 test.py
 test.xlsx
+requirements.txt
