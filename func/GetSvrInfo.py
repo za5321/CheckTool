@@ -6,9 +6,9 @@ con = Config().conf_db_connection()
 
 class GetSvrInfo:
     @staticmethod
-    def get_row_count(flag: str) -> int:
+    def get_row_count(flag: str, date: datetime) -> int:
         cursor = con.cursor()
-        sql = f"EXEC CT_SELECT_ROW_COUNT {flag}"
+        sql = f"EXEC CT_SELECT_ROW_COUNT '{flag}', '{str(date)}'"
         cursor.execute(sql)
         row = cursor.fetchall()
         return row[0][0]

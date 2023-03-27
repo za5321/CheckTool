@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtCore
 import datetime
 
+today = datetime.datetime.today().date()
+
 
 class MainForm(QMainWindow):
     def __init__(self, parent):
@@ -56,14 +58,14 @@ class MainForm(QMainWindow):
         self.ui.tableWgt1.clearContents()
 
         svr_list: dict = GetSvrInfo.get_svr_list()
-        self.ui.tableWgt1.setRowCount(GetSvrInfo.get_row_count("total"))
+        self.ui.tableWgt1.setRowCount(GetSvrInfo.get_row_count("TOTAL", today))
 
         current_row = 0
 
         for i, id in enumerate(svr_list):
             s = SetMainForm(id, date)
-            rowspan = GetSvrInfo.get_row_count(str(id))
-            self.svr_rowspan[id] = rowspan
+            #rowspan = GetSvrInfo.get_row_count(str(id))
+            #self.svr_rowspan[id] = rowspan
             self.svr_current_row[id] = current_row
 
             host_item = QTableWidgetItem(svr_list[id])
@@ -78,13 +80,13 @@ class MainForm(QMainWindow):
             if res_rate_item:
                 self.ui.tableWgt1.setItem(current_row, 3, res_rate_item)
 
-            letter_items, capacity_items = s.set_disk()
+            '''letter_items, capacity_items = s.set_disk()
             disk_rate_items = s.set_disk_rate()
             for j in range(len(letter_items)):
                 self.ui.tableWgt1.setItem(current_row + j, 4, letter_items[j])
                 self.ui.tableWgt1.setItem(current_row + j, 5, capacity_items[j])
                 if disk_rate_items:
-                    self.ui.tableWgt1.setItem(current_row + j, 6, disk_rate_items[j])
+                    self.ui.tableWgt1.setItem(current_row + j, 6, disk_rate_items[j])'''
 
             svc_item = s.set_svc()
             self.ui.tableWgt1.setItem(current_row, 7, svc_item)
@@ -98,17 +100,16 @@ class MainForm(QMainWindow):
             evt_item = s.set_evt()
             self.ui.tableWgt1.setItem(current_row, 10, evt_item)
 
-            for col in range(self.ui.tableWgt1.columnCount()):
+            '''for col in range(self.ui.tableWgt1.columnCount()):
                 if col not in self.get_config("use_separated_row"):
                     self.ui.tableWgt1.setSpan(current_row, col, rowspan, 1)
-            current_row += rowspan
+            current_row += rowspan'''
 
         self.ui.tableWgt1.resizeRowsToContents()
         # self.ui.tableWgt1.resizeColumnsToContents()
 
     def click_toolBtn1(self):
         """Refresh tableWgt1 (date: today)"""
-        today = datetime.datetime.today().date()
         self.set_tableWgt1(today)
 
     def click_toolBtn2(self):

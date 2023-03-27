@@ -66,7 +66,8 @@ class SetMainForm:
         items = []
         if today and yesterday:
             for i, letter in enumerate(today):
-                rate[letter] = int(yesterday[letter].replace("%", '')) - int(today[letter].replace("%", ''))
+                if letter in yesterday.keys():
+                    rate[letter] = int(yesterday[letter].replace("%", '')) - int(today[letter].replace("%", ''))
             for i, letter in enumerate(rate):
                 val = rate[letter]
                 item = QTableWidgetItem(f"+{abs(val)}") if val < 0 \
