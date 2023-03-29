@@ -12,6 +12,7 @@ class SetMainForm:
     def __init__(self, id: int, date: datetime):
         self.id = id
         self.date = date
+        self.yesterday = self.date - datetime.timedelta(days=1)
 
     def set_res(self) -> list:
         items = []
@@ -28,7 +29,7 @@ class SetMainForm:
 
     def set_res_rate(self) -> QTableWidgetItem:
         today_cpu, today_mem = GetSvrInfo.get_res(self.id, self.date)
-        yesterday_cpu, yesterday_mem = GetSvrInfo.get_res(self.id, (self.date - datetime.timedelta(days=1)))
+        yesterday_cpu, yesterday_mem = GetSvrInfo.get_res(self.id, self.yesterday)
 
         if today_mem and yesterday_mem:
             rate = round(float(yesterday_mem[0]) - float(today_mem[0]), 2)
@@ -46,30 +47,38 @@ class SetMainForm:
         letter_items: list = []
         capacity_items: list = []
 
-        disk = GetSvrInfo.get_disk(self.id, self.date)
-        if disk:
-            for i, letter in enumerate(disk):
-                letter_items.append(QTableWidgetItem(letter.upper()))
-                capacity_items.append(QTableWidgetItem(disk[letter]))
+        disk_letter = GetSvrInfo.get_disk_letter(self.id)
+        disk_capacity = GetSvrInfo.get_disk_capacity(self.id, self.date)
 
-        for i in range(len(letter_items)):
-            letter_items[i].setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
-            capacity_items[i].setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
-            if int(capacity_items[i].text().replace("%", '')) > 85:
-                capacity_items[i].setForeground(QBrush(red))
+        if disk_letter:
+            for i, letter in enumerate(disk_letter):
+                letter_items.append(QTableWidgetItem(letter.upper()))
+
+        if disk_capacity:
+            for i, letter in enumerate(disk_capacity):
+                capacity_items.append(QTableWidgetItem(disk_capacity[letter]))
+
+        for item in letter_items:
+            item.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+
+        for item in capacity_items:
+            item.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+            if int(item.text().replace("%", '')) > 85:
+                item.setForeground(QBrush(red))
+
         return letter_items, capacity_items
 
-    def set_disk_rate(self) -> list:
-        today = GetSvrInfo.get_disk(self.id, self.date)
-        yesterday = GetSvrInfo.get_disk(self.id, (self.date - datetime.timedelta(days=1)))
-        rate = {}
+    def set_disk_diff(self) -> list:
+        def get_cluster_server():
+            return GetSvrInfo.get_cluster_server(self.id)
+
+        clu_id = get_cluster_server()
         items = []
-        if today and yesterday:
-            for i, letter in enumerate(today):
-                if letter in yesterday.keys():
-                    rate[letter] = int(yesterday[letter].replace("%", '')) - int(today[letter].replace("%", ''))
-            for i, letter in enumerate(rate):
-                val = rate[letter]
+        disk_diff = GetSvrInfo.get_disk_diff(self.id, clu_id, self.date, self.yesterday)
+
+        if disk_diff:
+            for key, val in disk_diff.items():
+                val = int(val)
                 item = QTableWidgetItem(f"+{abs(val)}") if val < 0 \
                     else QTableWidgetItem(f"-{abs(val)}") if val > 0 \
                     else QTableWidgetItem(str(val))

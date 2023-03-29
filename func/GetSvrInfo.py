@@ -6,9 +6,9 @@ con = Config().conf_db_connection()
 
 class GetSvrInfo:
     @staticmethod
-    def get_row_count(flag: str, date: datetime) -> int:
+    def get_row_count(flag: str) -> int:
         cursor = con.cursor()
-        sql = f"EXEC CT_SELECT_ROW_COUNT '{flag}', '{str(date)}'"
+        sql = f"EXEC CT_SELECT_ROW_COUNT '{flag}'"
         cursor.execute(sql)
         row = cursor.fetchall()
         return row[0][0]
@@ -40,7 +40,20 @@ class GetSvrInfo:
         return cpu, mem
 
     @staticmethod
-    def get_disk(svr_id: int, date: datetime) -> dict:
+    def get_disk_letter(svr_id: int) -> list:
+        disk_letter = []
+
+        cursor = con.cursor()
+        sql = f"SELECT DISKNAME FROM DISK WHERE SERVERID = {str(svr_id)}"
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        while row:
+            disk_letter.append(row[0])
+            row = cursor.fetchone()
+        return disk_letter
+
+    @staticmethod
+    def get_disk_capacity(svr_id: int, date: datetime) -> dict:
         disk_capacity: dict = {}
 
         cursor = con.cursor()
@@ -51,6 +64,19 @@ class GetSvrInfo:
             disk_capacity[row[0]] = row[1]
             row = cursor.fetchone()
         return disk_capacity
+
+    @staticmethod
+    def get_disk_diff(svr_id: int , clu_id: int, today: datetime, yesterday: datetime) -> dict:
+        disk_diff: dict = {}
+        cursor = con.cursor()
+        sql = f"EXEC CT_SELECT_CHECK_RESULT_DISK_DIFF {str(svr_id)}, {str(clu_id)}, '{str(today)}', '{str(yesterday)}'"
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        while row:
+            disk_diff[row[0]] = row[1]
+            row = cursor.fetchone()
+        return disk_diff
+
 
     @staticmethod
     def get_service(svr_id: int, date: datetime) -> list:
@@ -139,3 +165,11 @@ class GetSvrInfo:
             cursor.execute(sql)
             row = cursor.fetchone()
             return list(row) if row else None
+
+    @staticmethod
+    def get_cluster_server(svr_id: int) -> int:
+        cursor = con.cursor()
+        sql = f"EXEC CT_SELECT_CLUSTER_SERVER {str(svr_id)}"
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row[0] if row else 0
