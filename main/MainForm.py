@@ -222,46 +222,23 @@ class MainForm(QMainWindow):
             for i in range(0, 11):
                 ws[f'{alphabet[i]}1'] = names[i]
                 ws.column_dimensions[alphabet[i]].width = 16
-                ws[f'{alphabet[i]}1'].fill = PatternFill(start_color="ebf1de", end_color='ebf1de', fill_type='solid')
 
             # 데이터 세팅
-            servers = {}    # 서버명, row 개수
-            nowServer = self.ui.tableWgt1.item(0, 0).text()  # 첫번째 서버 이름
-            rowCnt = 1
             tableWgtRowCnt = self.ui.tableWgt1.rowCount()
             tableWgtColCnt = self.ui.tableWgt1.columnCount()
+            nowServer = ""
 
             for row in range(0, tableWgtRowCnt):
-                #merge를 위한 rowSpan 구하기
-                temp = self.ui.tableWgt1.item(row, 0)
-                if temp is not None:
-                    servers[nowServer] = rowCnt
-                    nowServer = temp.text()
-                    rowCnt = 1
-                else:
-                    rowCnt = rowCnt + 1
+                excelRow = row + 2
+                # 호스트명 세팅
+                if self.ui.tableWgt1.item(row, 0) is not None:
+                    nowServer = self.ui.tableWgt1.item(row, 0).text()
+                ws[f'A{excelRow}'] = nowServer
 
-                for col in range(0, tableWgtColCnt):
-                    item = self.ui.tableWgt1.item(row, col) 
+                for col in range(1, tableWgtColCnt):
+                    item = self.ui.tableWgt1.item(row, col)
                     txt = '' if item is None else item.text()
-                    ws[f'{alphabet[col]}{row + 2}'] = txt
-                    if txt == '':
-                        continue
-                    if txt == '비정상' or (col == 5 and int(txt[:-1]) > 85):
-                        ws[f'{alphabet[col]}{row + 2}'].fill = PatternFill(start_color="ffff99", end_color='ffff99', fill_type='solid')
-            servers[nowServer] = rowCnt
-
-            # Merge
-            use_separated_row = [4, 5, 6]
-            current_row = 2
-            while current_row < tableWgtRowCnt + 2:
-                server = ws[f'A{current_row}'].value
-                rowSpan = servers[server]
-                for col in range(0, tableWgtColCnt):
-                    if col not in use_separated_row:
-                        ws.merge_cells(f'{alphabet[col]}{current_row}:{alphabet[col]}{current_row + rowSpan - 1}')
-                        ws[f'{alphabet[col]}{current_row}'].alignment = Alignment(vertical='center')
-                current_row += rowSpan
+                    ws[f'{alphabet[col]}{excelRow}'] = txt
 
             wb.save(r'C:\DailyCheck\file\재무파트 서버 데일리 체크_' + today + '.xlsx')
 
